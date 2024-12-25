@@ -11,23 +11,23 @@ const connectDB = async () => {
   } catch (err) {
     console.error("Could not connect to MongoDB. Please check your connection settings.");
     console.error("Error details:", err.message);
-    process.exit(1); // Exit the process to avoid further issues
+    process.exit(1); 
   }
 };
 
-// Optionally handle disconnection events
+
 mongoose.connection.on("disconnected", () => {
   console.warn("MongoDB connection lost. Attempting to reconnect...");
 });
 
-// Optional: Handle connection errors outside initial connection
+
 mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection error:", err.message);
 });
 
 module.exports = connectDB;
 
-// Usage in your main app file:
+
 const connectDB = require("./path/to/this/file");
 
 connectDB();
